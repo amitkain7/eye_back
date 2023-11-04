@@ -1,0 +1,23 @@
+[
+    {
+        "categoryName": "sports",
+        "description": "Stay focused and perform at your best with our high-performance sports glasses.",
+        "categoryImg": "https://i.imgur.com/oUmIJ2x.jpg",
+        "createdAt": "2023-10-30T13:47:34.198Z",
+        "updatedAt": "2023-10-30T13:47:34.198Z"
+    },
+    {
+        "categoryName": "vision",
+        "description": "Clear vision and stylish frames for a perfect blend of functionality and fashion",
+        "categoryImg": "https://i.imgur.com/YfmDZke.jpg",
+        "createdAt": "2023-10-30T13:47:34.198Z",
+        "updatedAt": "2023-10-30T13:47:34.198Z"
+    },
+    {
+        "categoryName": "sunglasses",
+        "description": "Protect your eyes in style with our UV-protected sunglasses collection.",
+        "categoryImg": "https://i.imgur.com/TpBMkyg.jpg",
+        "createdAt": "2023-10-30T13:47:34.198Z",
+        "updatedAt": "2023-10-30T13:47:34.198Z"
+    }
+]
