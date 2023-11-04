@@ -17,13 +17,13 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.get('/' , (req ,res) => {
-   res.json('welcome to eyeware store')
+app.get('/', (req, res) => {
+   res.status(234).res.send('welcome to eyeware store')
 })
 
-app.use('/api/auth' , authroute )
-app.use('/api/product' , productroute)
-app.use('/api/cart' , cartroute )
+app.use('/api/auth', authroute)
+app.use('/api/product', productroute)
+app.use('/api/cart', cartroute)
 app.use('/api/category', categoryroute)
 
 
@@ -36,13 +36,18 @@ app.use(errorHandler)
 
 const PORT = process.env.PORT || 8000
 
-const start = async() => {
-  
-   await ConnectDB(process.env.DB_URL)
-   console.log('db connected')
-   app.listen(PORT , () => {
-    console.log(`server is listening at port ${PORT}...`)
-   })
+const start = async () => {
+   try {
+
+      await ConnectDB(process.env.DB_URL)
+      console.log('db connected')
+      app.listen(PORT, () => {
+         console.log(`server is listening at port ${PORT}...`)
+      })
+   }
+   catch (error) {
+      console.log(error)
+   }
 }
 
 start()
