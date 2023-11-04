@@ -18,7 +18,7 @@ app.use(express.json())
 app.use(cors())
 
 app.get('/', (req, res) => {
-   res.status(234).res.send('welcome to eyeware store')
+   res.status(234).send('welcome to eyeware store')
 })
 
 app.use('/api/auth', authroute)
