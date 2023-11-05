@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 require('dotenv').config()
+const helmet = require('helmet')
 
 const ConnectDB = require('./db/connect')
 // routes
@@ -8,6 +9,7 @@ const authroute = require('./routes/auth')
 const productroute = require('./routes/product')
 const cartroute = require('./routes/cart')
 const categoryroute = require('./routes/category')
+const paymentroute = require('./routes/payment')
 // other middleware import
 const errorHandler = require('./middleware/errorhandler')
 const notFound = require('./middleware/notfound')
@@ -15,17 +17,17 @@ const app = express()
 
 // middleware
 app.use(express.json())
+app.use(helmet())
 app.use(cors())
-
 app.get('/', (req, res) => {
-   res.status(234).send('welcome to eyeware store')
+   res.status(234).send('welcome to EyeSome store')
 })
 
 app.use('/api/auth', authroute)
 app.use('/api/product', productroute)
 app.use('/api/cart', cartroute)
 app.use('/api/category', categoryroute)
-
+app.use('/api/payment' , paymentroute)
 
 
 
