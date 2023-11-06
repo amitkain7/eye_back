@@ -6,7 +6,7 @@ require('dotenv').config()
 
 // create Order
 
-router.post('/order', async (req, res) => {
+router.post('/order',  async (req, res) => {
     try {
 
         const instance = new RazorPay({
