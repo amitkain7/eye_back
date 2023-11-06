@@ -17,7 +17,7 @@ const app = express()
 
 // middleware
 app.use(express.json())
-app.use(helmet())
+// app.use(helmet())
 app.use(cors())
 app.get('/', (req, res) => {
    res.status(234).send('welcome to EyeSome store')
