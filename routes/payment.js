@@ -1,12 +1,13 @@
 const router = require('express').Router()
 const RazorPay = require('razorpay')
 const crypto = require('crypto')
+const { verifyToken } = require('../middleware/authentication')
 require('dotenv').config()
 
 
 // create Order
 
-router.post('/order',  async (req, res) => {
+router.post('/order', verifyToken,  async (req, res) => {
    
     try {
 
@@ -36,7 +37,7 @@ router.post('/order',  async (req, res) => {
 
 
 // payment verify
-router.post('/verify',  async (req, res) => {
+router.post('/verify',verifyToken,  async (req, res) => {
     try {
        
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body
