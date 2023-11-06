@@ -8,34 +8,24 @@ const { verifyToken } = require('../middleware/authentication')
 
 router.post('/order', verifyToken, async (req, res) => {
     try {
+
         const instance = new RazorPay({
             key_id: process.env.key_id,
-            key_secret: process.env.key_secret
-        })
+            key_secret: process.env.key_secret,
+        });
 
         const options = {
-            amount: req.body.amount *100 ,
-            currency: 'INR',
-            receipt: crypto.randomBytes(10).toString('hex')
-        }
+            amount: Number(req.body.amount * 100),
+            currency: "INR",
+        };
+        const order = await instance.orders.create(options);
 
-        // instance.orders.create(options, (err, order) => {
-        //     if (err) {
-        //         console.log(err)
-        //         res.status(500).json({ msg: 'Something went wrong' })
-        //     }
-        //     res.status(200).json({ data: order })
+        res.status(200).json({
+            success: true,
+            data : order,
 
-        // })
+        })
 
-         const response = await instance.orders.create(options)
-
-        if (response.error) {
-            console.log(res)
-            res.status(500).json({ msg: 'Something went wrong' })
-            return
-        }
-        res.status(200).json({ data: response })
     }
     catch (error) {
         console.log(error)
@@ -55,7 +45,7 @@ router.post('/verify', verifyToken, async (req, res) => {
             .createHmac('sha256', process.env.key_secret)
             .update(razorpay_order_id + '|' + razorpay_payment_id)
             .digest('hex')
-        
+
         if (razorpay_signature === expectedSign) {
             res.status(200).json({ msg: 'payment verified successfully' })
         } else {
