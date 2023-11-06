@@ -18,7 +18,14 @@ const app = express()
 // middleware
 app.use(express.json())
 app.use(helmet())
-app.use(cors('*'))
+app.use(cors(
+    {
+        origin : ["https://eyeware-client.vercel.app"],
+        methods : ["GET", "POST", "PUT", "DELETE", "PATCH"],
+        credentials : true
+    }
+    ));
+// app.use(cors())
 
 
 app.get('/', (req, res) => {
