@@ -18,7 +18,7 @@ const app = express()
 // middleware
 app.use(express.json())
 app.use(helmet())
-app.use(cors())
+app.use(cors('*'))
 
 
 app.get('/', (req, res) => {
