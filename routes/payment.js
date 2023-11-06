@@ -6,7 +6,7 @@ const { verifyToken } = require('../middleware/authentication')
 
 // create Order
 
-router.post('/order', verifyToken, async (req, res) => {
+router.post('/order' async (req, res) => {
     try {
 
         const instance = new RazorPay({
@@ -35,7 +35,7 @@ router.post('/order', verifyToken, async (req, res) => {
 
 
 // payment verify
-router.post('/verify', verifyToken, async (req, res) => {
+router.post('/verify' async (req, res) => {
     try {
 
         const { razorpay_order_id,
